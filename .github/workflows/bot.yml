@@ -1,0 +1,26 @@
+name: Run YouTubeGrabBot 24/7
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Har 6 ghante me restart karega
+  workflow_dispatch:  # Manual run ka option
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository Clone Karo
+        uses: actions/checkout@v3
+
+      - name: Python Install Karo
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Dependencies Install Karo
+        run: |
+          pip install -r requirements.txt
+
+      - name: Bot Run Karo
+        run: python bot.py
