@@ -1,4 +1,4 @@
-name: Run YouTubeGrabBot 24/7
+ name: Run YouTubeGrabBot 24/7
 
 on:
   schedule:
