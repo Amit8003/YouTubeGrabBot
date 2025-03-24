@@ -1,4 +1,4 @@
- name: Run YouTubeGrabBot 24/7
+name: Run YouTubeGrabBot 24/7
 
 on:
   schedule:
@@ -19,8 +19,11 @@ jobs:
           python-version: '3.12'
 
       - name: Dependencies Install Karo
+        run: pip install -r requirements.txt
+
+      - name: Secret Firebase Key Decode Karo
         run: |
-          pip install -r requirements.txt
+          echo "${{ secrets.FIREBASE_CREDENTIALS }}" | base64 --decode > firebase.json
 
       - name: Bot Run Karo
         run: python bot.py
